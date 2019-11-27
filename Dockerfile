@@ -9,6 +9,7 @@ RUN \
   gem install asciidoctor-pdf-cjk rouge --no-ri --no-rdoc && \
   gem install --version ${COMPASS_VERSION} compass --no-ri --no-rdoc && \
   gem install --version ${ZURB_FOUNDATION_VERSION} zurb-foundation --no-ri --no-rdoc && \
+  gem install asciidoctor-diagram --no-ri --no-rdoc && \
   mkdir /fonts && \
   wget http://blueskis.wktk.so/AozoraMincho/archive/v0.1/aozoramincho-readme-ttf.zip -O /tmp/aozoramincho.zip && \
   unzip /tmp/aozoramincho.zip -d /fonts && \
@@ -17,6 +18,9 @@ RUN \
   unzip /tmp/genshingothic.zip -d /fonts/genshingothic && \
   wget https://github.com/edihbrandon/RictyDiminished/archive/master.zip -O /tmp/RictyDiminished.zip && \
   unzip /tmp/RictyDiminished.zip -d /fonts && \
+  ln -s /fonts/RictyDiminished-master /usr/share/fonts/ && \
+  ln -s /fonts/aozoramincho-readme-ttf /usr/share/fonts/ && \
+  ln -s /fonts/genshingothic /usr/share/fonts/ && \
   wget https://github.com/kuboaki/beauty-pdf-using-asciidoctor-pdf/archive/master.zip -O /tmp/beauty-pdf-using-asciidoctor-pdf.zip && \
   unzip /tmp/beauty-pdf-using-asciidoctor-pdf.zip -d /opt && \
   mkdir /styles && \
@@ -29,5 +33,6 @@ RUN \
   rm -rf /tmp/* /var/tmp/*
 
 COPY Rakefile /root/
+COPY config.rb /root/
 
 ENTRYPOINT ["rake", "-f", "/root/Rakefile"]
