@@ -3,7 +3,7 @@
 desc "Make a pdf file"
 task :pdf, %i[filepath] do |_, args|
   rouge_theme_path = Dir.glob("/usr/lib/ruby/gems/*/gems/rouge-*/lib/rouge/themes/github.rb").sort.last
-  `asciidoctor-pdf -r asciidoctor-pdf-cjk -r asciidoctor-diagram -r /root/config.rb -a pdf-style=pdf-style -a pdf-stylesdir=/styles -a pdf-fontsdir="/fonts/aozoramincho-readme-ttf;/fonts/genshingothic;/fonts/RictyDiminished-master;GEM_FONTS_DIR" -r rouge -r #{rouge_theme_path} #{args.filepath}`
+  `asciidoctor-pdf -r asciidoctor-pdf-cjk -r asciidoctor-diagram -r /root/config.rb -a pdf-style=pdf-style -a pdf-stylesdir=/styles -a pdf-fontsdir="/fonts/ipaexm00401;/fonts/genshingothic;/fonts/RictyDiminished-master;GEM_FONTS_DIR" -r rouge -r #{rouge_theme_path} #{args.filepath}`
 end
 
 desc "Make a html file, If you want a css list, run list_css task."
